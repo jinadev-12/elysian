@@ -41,47 +41,56 @@ function Faqs() {
   };
 
   return (
-    <section className="py-16 bg-black text-white font-inter">
+    <section className="py-16 md:py-20 md:py-28 bg-black text-white font-inter">
       {/* Container */}
-      <div className="container mx-auto px-6 md:px-8">
+      <div className="max-w-[1180px] mx-auto w-[90%] flex flex-col lg:flex-row lg:justify-between lg:gap-20">
         {/* Header */}
-        <div className="mb-12">
-          <h2 className="text-[64px] md:text-4xl text-white font-cool">
-            FAQS
-          </h2>
-          <p className="text-lg text-[#ddd] mb-2">
+        <div className="mb-16 lg:mb-0 lg:w-1/2">
+          <h2 className="text-[64px] text-white font-cool">FAQS</h2>
+          <p className="text-lg text-[#ddd] inline ">
             Can’t find the answer you’re looking for? Chat with our friendly
-            team or email us at
+            team or email us at  {" "}
           </p>
           <a
             href="mailto:info@elysiantennis.com"
-            className="text-primary text-lg hover:underline"
+            className="text-primary text-lg underline"
           >
             info@elysiantennis.com
           </a>
         </div>
 
         {/* FAQ List */}
-        <div className="max-w-3xl mx-auto divide-y divide-gray-700">
+        <div className="lg:w-1/2">
           {faqs.map((faq, index) => (
-            <div key={index} className="py-5">
+            <div
+              key={index}
+              className={`py-2 border-b transition-colors duration-300 ${
+                openIndex === index ? "border-primary" : "border-[#ceff653d]"
+              }`}
+            >
               <button
                 onClick={() => toggleFaq(index)}
                 className="w-full flex justify-between items-center text-left"
               >
-                <span className="font-semibold text-lg">{faq.question}</span>
                 <span
-                  className={`transition-transform duration-200 text-2xl text-gray-400 ${
-                    openIndex === index ? "rotate-45" : ""
+                  className={`font-semibold text-lg transition-colors duration-200 ${
+                    openIndex === index ? "text-primary" : "text-gray-300"
                   }`}
                 >
-                  +
+                  {faq.question}
+                </span>
+                <span
+                  className={`transition-transform duration-200 text-2xl text-gray-400 ${
+                    openIndex === index ? "rotate-180" : ""
+                  }`}
+                >
+                  <i className="ri-arrow-down-s-line text-3xl md:text-4xl"></i>
                 </span>
               </button>
               <div
-                className={`text-gray-400 transition-all duration-300 ${
+                className={`text-gray-300 transition-all duration-300 ${
                   openIndex === index
-                    ? "max-h-40 opacity-100 mt-2"
+                    ? "max-h-40 opacity-100 mt-2 mb-4"
                     : "max-h-0 opacity-0 overflow-hidden"
                 }`}
               >
