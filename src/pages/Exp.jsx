@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Navbar() {
+function Exp() {
   return (
     <div>
-     
+<h1>mbvkhv</h1>
     </div>
-  );
+  )
 }
 
-export default Navbar
+export default Exp
