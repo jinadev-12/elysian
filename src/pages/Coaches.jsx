@@ -13,6 +13,7 @@ function Coaches() {
   const row1Ref = useRef(null);
   const row2Ref = useRef(null);
   const headingcoachRef = useRef(null);
+  const inputcoachesRef = useRef(null)
 
    const headingcoachText = "MEET THE COACHES BEHIND ELYSIAN";
    const wordscoachArray = headingcoachText.split(" ");
@@ -70,6 +71,21 @@ function Coaches() {
       }
     );
 
+    // inputbox
+        gsap.fromTo(
+          inputcoachesRef.current,
+          { y: 20, autoAlpha: 0 }, // start
+          {
+            y: 0,
+            autoAlpha: 1, // end
+            duration: 1,
+            scrollTrigger: {
+              trigger: headingcoachRef.current,
+              start: "top 50%",
+            },
+          }
+        );
+
     });
 
     return () => ctx.revert();
@@ -95,7 +111,7 @@ function Coaches() {
             ))}
           </h1>
           {/* button */}
-          <div>
+          <div ref={inputcoachesRef}>
             <button className="bg-primary hover:bg-[#abd455]  px-8 py-4 rounded-[80px] font-manrope">
               EXPLORE ACADEMY <i class="ri-arrow-right-s-line "></i>
             </button>
