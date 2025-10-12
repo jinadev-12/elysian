@@ -1,57 +1,54 @@
 import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 import img1 from "../assets/coach-img1.jpg";
 import img2 from "../assets/coach-img2.jpg";
 import img3 from "../assets/coach-img3.jpg";
 import img4 from "../assets/coach-img4.jpg";
 
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
 
 function Coaches() {
+  const row1Ref = useRef(null);
+  const row2Ref = useRef(null);
 
-    const row1Ref = useRef(null);
-        const row2Ref = useRef(null);
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // row-1
+      gsap.fromTo(
+        ".coach-image",
+        { scale: 1 },
+        {
+          scale: 1.46,
+          scrollTrigger: {
+            trigger: row1Ref.current,
+            start: "top 88%", // row hits the middle of viewport
+            end: "top top", // row hits the top of viewport
+            scrub: true, // smooth scaling while scrolling
+          },
+          ease: "power2.out",
+        }
+      );
+      // row-2
+      gsap.fromTo(
+        ".coach-image-2",
+        { scale: 1 },
+        {
+          scale: 1.46,
+          scrollTrigger: {
+            trigger: row2Ref.current,
+            start: "top 88%", // row hits the middle of viewport
+            end: "top top", // row hits the top of viewport
+            scrub: true, // smooth scaling while scrolling
+          },
+          ease: "power2.out",
+        }
+      );
+    });
 
-
-    useEffect(() => {
-      const ctx = gsap.context(() => {
-        // row-1
-        gsap.fromTo(
-          ".coach-image",
-          { scale: 1 },
-          {
-            scale: 1.46,
-            scrollTrigger: {
-              trigger: row1Ref.current,
-              start: "top 88%", // row hits the middle of viewport
-              end: "top top", // row hits the top of viewport
-              scrub: true, // smooth scaling while scrolling
-            },
-            ease: "power2.out",
-          }
-        );
-// row-2
-         gsap.fromTo(
-           ".coach-image-2",
-           { scale: 1 },
-           {
-             scale: 1.46,
-             scrollTrigger: {
-               trigger: row2Ref.current,
-               start: "top 88%", // row hits the middle of viewport
-               end: "top top", // row hits the top of viewport
-               scrub: true, // smooth scaling while scrolling
-             },
-             ease: "power2.out",
-           }
-         );
-      });
-
-      return () => ctx.revert();
-    }, []);
+    return () => ctx.revert();
+  }, []);
 
   return (
     // main
