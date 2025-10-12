@@ -5,6 +5,8 @@ import Hero from "./pages/Hero";
 import Exp from './pages/Exp';
 import Faqs from './pages/Faqs';
 import Footer from './pages/Footer';
+import Location from "./pages/Location";
+
 
 
 
@@ -15,6 +17,7 @@ function App() {
       <Navbar />
       <Hero />
       <Exp />
+      <Location />
       <Faqs />
       <Footer />
     </div>

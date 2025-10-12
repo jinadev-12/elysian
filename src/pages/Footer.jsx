@@ -3,7 +3,7 @@ import React from 'react'
 function Footer() {
   return (
     // Footer
-    <div className="py-16">
+    <div className="py-16 md:py-20">
       {/* container */}
       <div className="max-w-[1180px] mx-auto w-[90%]">
         {/* information */}

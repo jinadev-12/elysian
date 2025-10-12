@@ -41,7 +41,7 @@ function Faqs() {
   };
 
   return (
-    <section className="py-16 md:py-20 lg:py-28 bg-[#080808] text-white font-inter">
+    <section className="py-16 md:py-20 bg-[#080808] text-white font-inter">
       {/* Container */}
       <div className="max-w-[1180px] mx-auto w-[90%] flex flex-col lg:flex-row lg:justify-between lg:gap-20">
         {/* Header */}
