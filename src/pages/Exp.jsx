@@ -19,7 +19,7 @@ function Exp() {
           {/* button and input */}
           <div className="flex flex-col sm:flex-row  gap-5 items-center mt-3">
             {/* input */}
-            <div className="w-full lg:w-auto">
+            <div className="w-full md:w-auto">
               <input
                 type="text"
                 placeholder="Enter your email"
