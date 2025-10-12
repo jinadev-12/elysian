@@ -5,6 +5,7 @@ import Hero from "./pages/Hero";
 import Exp from './pages/Exp';
 import Faqs from './pages/Faqs';
 import Footer from './pages/Footer';
+import Coaches from './pages/Coaches';
 
 
 
@@ -17,6 +18,7 @@ function App() {
       <Exp />
       <Faqs />
       <Footer />
+      <Coaches/>
     </div>
   );
 }
