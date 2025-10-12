@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         cool: ['"Coolvetica Condensed"', "sans-serif"],
+        manrope: ['"Manrope"', "sans-serif"],
       },
       colors: {
         primary: "#CEFF65", // give it a name you like

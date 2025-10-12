@@ -3,16 +3,18 @@ import './index.css'
 import Navbar from './pages/Navbar'
 import Hero from "./pages/Hero";
 import Exp from './pages/Exp';
+import Faqs from './pages/Faqs';
 
 
 
 
 function App() {
   return (
-    <div>
+    <div className="font-manrope">
       <Navbar />
       <Hero />
-      <Exp/>
+      <Exp />
+      <Faqs />
     </div>
   );
 }
