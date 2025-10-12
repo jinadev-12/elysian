@@ -32,7 +32,7 @@ function Exp() {
 
             {/* button */}
             <div className="w-full sm:w-auto ">
-              <button className="bg-primary w-full sm:w-auto  px-8 py-4 rounded-[80px] font-manrope">
+              <button className="bg-primary hover:bg-[#abd455] w-full sm:w-auto  px-8 py-4 rounded-[80px] font-manrope">
                 SUBSCRIBE
               </button>
             </div>
