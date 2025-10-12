@@ -12,6 +12,10 @@ import img4 from "../assets/coach-img4.jpg";
 function Coaches() {
   const row1Ref = useRef(null);
   const row2Ref = useRef(null);
+  const headingcoachRef = useRef(null);
+
+   const headingcoachText = "MEET THE COACHES BEHIND ELYSIAN";
+   const wordscoachArray = headingcoachText.split(" ");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -45,6 +49,27 @@ function Coaches() {
           ease: "power2.out",
         }
       );
+
+// heading
+ const words = headingcoachRef.current.querySelectorAll(".wordcoach");
+    gsap.fromTo(
+      words,
+      { opacity: 0, y: 30 }, // from state
+      {
+        opacity: 1,
+        y: 0,
+
+        stagger: 0.1, // animate each word with delay
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: headingcoachRef.current, // element that triggers animation
+          start: "top 90%", // when top of element hits 80% of viewport
+          toggleActions: "play none none none", // play only once
+        },
+      }
+    );
+
     });
 
     return () => ctx.revert();
@@ -58,10 +83,17 @@ function Coaches() {
         {/* heading and button */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6">
           {/* heading */}
-          <h3 className="text-[64px] font-cool leading-[1.04]">
-            MEET THE COACHES <br />
-            BEHIND ELYSIAN
-          </h3>
+          <h1
+            ref={headingcoachRef}
+            className="text-[64px] font-cool uppercase leading-[1.04]"
+          >
+            {wordscoachArray.map((word, i) => (
+              <React.Fragment key={i}>
+                <span className="wordcoach inline-block">{word}</span>
+                {word === "COACHES" ? <br /> : " "}
+              </React.Fragment>
+            ))}
+          </h1>
           {/* button */}
           <div>
             <button className="bg-primary hover:bg-[#abd455]  px-8 py-4 rounded-[80px] font-manrope">
