@@ -3,7 +3,7 @@ import image1 from "../assets/location-1.jpg";
 import image2 from "../assets/location-2.jpg";
 import image3 from "../assets/location-3.jpg";
 import image4 from "../assets/location-4.jpg";
-import bg from "../assets/location-4.jpg";
+import bg from "../assets/location-bg.jpg";
 
 
 
@@ -33,13 +33,16 @@ function Location() {
 
   return (
     <div
-      className="py-16 md:py-20 bg-cover bg-center bg-no-repeat text-white"
+      className="relative py-16 md:py-20 bg-cover bg-center bg-no-repeat text-gray-200"
       style={{
         backgroundImage: `url(${bg})`,
       }}
     >
+      {/* overlay */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-black/70 to-black/0"></div>
+
       {/* container */}
-      <div className="max-w-6xl mx-auto px-4 flex flex-col lg:flex-row gap-16">
+      <div className="max-w-[1180px] w-[90%] mx-auto flex flex-col lg:flex-row gap-16 relative z-10">
         {/* head */}
         <div className="flex flex-col max-w-[440px]">
           <h2 className="font-cool text-6xl md:text-5xl font-bold mb-3 tracking-wider">
@@ -67,11 +70,11 @@ function Location() {
               <img
                 src={loc.img}
                 alt={loc.name}
-                className="w-full h-56 object-cover rounded-2xl"
+                className="w-full h-56 object-cover rounded-2xl mb-3"
               />
               <div className="">
-                <p className="font-semibold ">{loc.name}</p>
-                <p className="text-sm">{loc.address}</p>
+                <p className="font-cool tracking-wider text-2xl uppercase">{loc.name}</p>
+                <p className="text-sm font-light">{loc.address}</p>
               </div>
             </div>
           ))}
