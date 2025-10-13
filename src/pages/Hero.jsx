@@ -12,7 +12,7 @@ function Hero() {
     const ctx = gsap.context(() => {
       // Start centered, small
       gsap.set(videoRef.current, {
-        scale: 0.5, // start at 50% size
+        scale: 0.6, // start at 60% size
         transformOrigin: "center center", // keeps it centered
         position: "absolute",
         top: "50%",
@@ -39,24 +39,42 @@ function Hero() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative bg-white text-black">
-      {/* home content text absolute mela */}
-      <div className=" left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10">
-        <h1 className="font-cool text-[80px] md:text-[112px] lg:text-[180px] leading-none">
-          SWING WITH <br /> CONFIDENCE
-        </h1>
-      </div>
+    // home
+    <div className="pt-10">
+      {/* container */}
+      <div
+        ref={containerRef}
+        className="relative top-12 h-[100vh] overflow-hidden bg-white text-black"
+      >
+        {/* title */}
+        <div className="absolute top-0 left-[50%] transform translate-x-[-50%] z-10 text-center">
+          <h1 className="font-cool text-[80px] md:text-[112px] lg:text-[160px] leading-[0.92]">
+            <span className="whitespace-nowrap">SWING WITH</span>
+            <br />
+            CONFIDENCE
+          </h1>
+        </div>
 
-      {/* Home video section */}
-      <div className="relative h-[100vh] overflow-hidden">
-        <video
-          ref={videoRef}
-          className="object-cover w-full h-full"
-          src="/homeBG.mp4"
-          autoPlay
-          muted
-          loop
-        ></video>
+        {/* Learn More button */}
+        <div className="absolute inset-0 flex items-center justify-center z-10">
+          <button className="flex items-center gap-3 px-8 py-4 bg-black text-white rounded-full text-lg font-medium hover:scale-105 transition-transform duration-300">
+            Learn More
+            <i className="ri-arrow-down-long-line text-2xl"></i>
+          </button>
+        </div>
+
+        {/* video wrapper */}
+        <div>
+          <video
+            ref={videoRef}
+            className="object-cover w-full h-full rounded-[60px]"
+            src="/homeBG.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+          ></video>
+        </div>
       </div>
     </div>
   );
