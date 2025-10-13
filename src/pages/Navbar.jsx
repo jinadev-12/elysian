@@ -5,9 +5,9 @@ function Navbar() {
   const sidebaropen = () => setIsOpen(!isOpen);
 
   return (
-    <div className="font-cool tracking-wider">
+    <div className="font-cool tracking-wider relative ">
       {/* navbar */}
-      <div className="w-[90%] mx-auto max-w-[1180px] flex justify-between items-center lg:h-24 h-16 fixed top-0 left-0 right-0 bg-white z-50 shadow-sm px-4">
+      <div className="w-[90%] mx-auto max-w-[1180px] flex  justify-between items-center  lg:h-24 h-16   bg-white z-50 shadow-sm md:px-20 px-4">
         {/* left */}
         <div className="gap-16 text-lg hidden md:flex">
           <a
@@ -25,7 +25,7 @@ function Navbar() {
           </a>
         </div>
         {/* logo */}
-        <div className="text-2xl">
+        <div className="text-2xl z-50">
           <h4>ELYSIAN TENNIS ACADEMY</h4>
         </div>
         {/* right */}
@@ -47,7 +47,7 @@ function Navbar() {
         {/* mobile hamburger */}
         <div className="flex md:hidden">
           <button
-            className="z-50 w-6 h-6 flex flex-col justify-between items-center md:hidden"
+            className="z-50 w-6 h-6 flex flex-col justify-between items-center "
             onClick={sidebaropen}
           >
             <span
@@ -71,7 +71,7 @@ function Navbar() {
 
       {/* sidebar */}
       <div
-        className={`fixed bg-white top-16 right-0 w-full h-[calc(100vh-4rem)] flex justify-start pt-0 text-center transition-transform duration-300 ease-in-out ${
+        className={`md:hidden fixed bg-white top-16 right-0 w-full h-[calc(100vh-4rem)] flex justify-start pt-0 text-center transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         } lg:hidden z-40`}
       >
