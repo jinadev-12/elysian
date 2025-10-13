@@ -130,7 +130,7 @@ function Coaches() {
               <img
                 src={img1}
                 alt=""
-                className="w-full h-full object-cover object-center rounded-[3.5rem]"
+                className="w-full h-full object-cover object-center rounded-[3.5rem] shadow-[0_100px_80px_#00000012,0_64px_46px_#0000000f,0_40px_25px_#0000000d,0_20px_13px_#0000000a,0_8px_7px_#00000008,0_2px_3px_#00000005]"
               />
             </div>
             {/* text-container */}
@@ -156,7 +156,7 @@ function Coaches() {
               <img
                 src={img2}
                 alt=""
-                className="w-full h-full object-cover object-center rounded-[3.5rem]"
+                className="w-full h-full object-cover object-center rounded-[3.5rem] shadow-[0_100px_80px_#00000012,0_64px_46px_#0000000f,0_40px_25px_#0000000d,0_20px_13px_#0000000a,0_8px_7px_#00000008,0_2px_3px_#00000005]"
               />
             </div>
             <div className="lg:ml-[-60px]">
@@ -188,7 +188,7 @@ function Coaches() {
               <img
                 src={img3}
                 alt=""
-                className="w-full h-full object-cover object-center rounded-[3.5rem]"
+                className="w-full h-full object-cover object-center rounded-[3.5rem] shadow-[0_100px_80px_#00000012,0_64px_46px_#0000000f,0_40px_25px_#0000000d,0_20px_13px_#0000000a,0_8px_7px_#00000008,0_2px_3px_#00000005]"
               />
             </div>
             <div className="lg:ml-[-60px]">
@@ -213,7 +213,7 @@ function Coaches() {
               <img
                 src={img4}
                 alt=""
-                className="w-full h-full object-cover object-center rounded-[3.5rem]"
+                className="w-full h-full object-cover object-center rounded-[3.5rem] shadow-[0_100px_80px_#00000012,0_64px_46px_#0000000f,0_40px_25px_#0000000d,0_20px_13px_#0000000a,0_8px_7px_#00000008,0_2px_3px_#00000005]"
               />
             </div>
             <div className="lg:ml-[-60px]">
