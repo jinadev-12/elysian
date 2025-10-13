@@ -36,11 +36,11 @@ useEffect(() => {
       {/* Container */}
       <div ref={rallyRef} className="w-[90%]  max-w-[1180px] mx-auto">
         {/* image and text container */}
-        <div className="relative m-auto text-center mt-80 h-[550px]">
-          <h1 className="z-30 absolute top-[-255px] left-1/2 -translate-x-1/2 lg:text-[180px] m-auto font-cool lg:max-w-[495px] lg:tracking-[-3.6px] leading-[0.9]">
-            READY TO RALLY?
+        <div className="relative m-auto text-center mt-40 md:mt-80 h-[550px]">
+          <h1 className="z-30 absolute top-[-112.5px] md:top-[-255px] left-1/2 -translate-x-1/2 text-[80px] md:text-[180px] m-auto font-cool lg:max-w-[495px] lg:tracking-[-3.6px] tracking-[-1.6px] leading-[0.9] ">
+            <span className="whitespace-nowrap">READY TO </span> RALLY?
           </h1>
-          <div ref={imageRef} className="absolute top-0  lg:h-[530px] w-full ">
+          <div ref={imageRef} className="absolute top-0  h-[530px] w-full ">
             <img
               src={img}
               alt=""
