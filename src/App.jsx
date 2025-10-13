@@ -6,8 +6,8 @@ import Exp from './pages/Exp';
 import Faqs from './pages/Faqs';
 import Footer from './pages/Footer';
 import Location from "./pages/Location";
-
 import Coaches from './pages/Coaches';
+import Rally from './pages/Rally';
 
 
 
@@ -21,6 +21,7 @@ function App() {
       <Coaches/>
       <Location />
       <Faqs />
+      <Rally/>
       <Footer />
     </div>
   );
