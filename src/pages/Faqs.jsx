@@ -1,6 +1,35 @@
-import React, { useState } from "react";
+import { useEffect, useRef,useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Faqs() {
+
+    const faqRef = useRef(null);
+    // gsap
+ useEffect(() => {
+
+
+ gsap.fromTo(
+      ".fadeup",
+       { opacity: 0, y: 30 }, // from state
+      {
+        opacity: 1,
+        y: 0,
+
+        stagger: 0.1, // animate each word with delay
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: faqRef.current, // element that triggers animation
+          start: "top 50%", // when top of element hits 80% of viewport
+        },
+      }
+    );
+  }, []);
+
+
   const faqs = [
     {
       question: "What is Elysian Tennis?",
@@ -41,26 +70,32 @@ function Faqs() {
   };
 
   return (
-    <section className="py-16 md:py-20 bg-[#080808] text-white font-inter">
+    <section
+      ref={faqRef}
+      className="py-16 md:py-20 bg-[#080808] text-white font-inter"
+    >
       {/* Container */}
       <div className="max-w-[1180px] mx-auto w-[90%] flex flex-col lg:flex-row lg:justify-between lg:gap-20">
         {/* Header */}
         <div className="mb-16 lg:mb-0 lg:w-1/2 max-w-[460px] flex flex-col">
-          <h2 className="text-[64px] text-white font-cool">FAQS</h2>
-          <p className="text-lg text-[#ddd]">
-            Can’t find the answer you’re looking for? Please chat to our
-            friendly team or write us an email at
-          </p>
-          <a
-            href="mailto:info@elysiantennis.com"
-            className="text-primary text-lg underline"
-          >
-            info@elysiantennis.com
-          </a>
+          <h2 className="fadeup text-[64px] text-white font-cool">FAQS</h2>
+          <div className="fadeup">
+            {/* details */}
+            <p className="text-lg text-[#ddd]">
+              Can’t find the answer you’re looking for? Please chat to our
+              friendly team or write us an email at
+            </p>
+            <a
+              href="mailto:info@elysiantennis.com"
+              className="text-primary text-lg underline"
+            >
+              info@elysiantennis.com
+            </a>
+          </div>
         </div>
 
         {/* FAQ List */}
-        <div className="lg:w-1/2">
+        <div className="fadeup lg:w-1/2">
           {faqs.map((faq, index) => (
             <div
               key={index}
