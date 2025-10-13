@@ -7,7 +7,7 @@ function Footer() {
       {/* container */}
       <div className="max-w-[1180px] mx-auto w-[90%]">
         {/* information */}
-        <div className="flex flex-col md:flex-row md:justify-between gap-6 mb-12">
+        <div className="flex flex-col sm:flex-row sm:justify-between gap-6 mb-12">
           {/* notice */}
           <div>
             <p className="uppercase text-2xl tracking-wider font-cool mb-2">
@@ -18,7 +18,7 @@ function Footer() {
             </p>
           </div>
           {/* links */}
-          <div className="font-cool tracking-wider flex text-lg gap-6">
+          <div className="font-cool tracking-wider flex text-lg gap-6 md:gap-12">
             <div>LOCATIONS</div>
             <div>FITNESS</div>
             <div>ABOUT</div>
@@ -43,12 +43,12 @@ function Footer() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="w-full flex-1 px-6 py-4 rounded-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-700"
+              className="w-full flex-1 px-5 py-4 rounded-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-700"
               required
             />
             <button
               type="submit"
-              className="w-full sm:w-auto px-10 py-4 rounded-full bg-primary text-black transition-all"
+              className="w-full sm:w-auto px-8 py-4 rounded-full bg-primary text-black  hover:bg-[#abd455] transition-all"
             >
               SUBSCRIBE
             </button>

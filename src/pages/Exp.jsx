@@ -74,7 +74,7 @@ function Exp() {
               <input
                 type="text"
                 placeholder="Enter your email"
-                className="bg-transparent w-full lg:w-auto outline-none duration-500 ease-in border rounded-[40px] py-[15px] pr-16 pl-4 border-x-[#ceff65] border-y-primary hover:border-x-[#b5bdb7] focus:bg-[#ffffff1a] transition-colors"
+                className="bg-transparent w-full lg:w-auto outline-none duration-500 ease-in border rounded-[40px] py-[15px] pr-16 pl-5 border-x-[#ceff65] border-y-primary hover:border-x-[#b5bdb7] focus:bg-[#898b86] transition-colors"
               />
             </div>
             <div className="w-full sm:w-auto">
