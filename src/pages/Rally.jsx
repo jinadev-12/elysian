@@ -32,9 +32,9 @@ useEffect(() => {
 
   return (
     // main
-    <div className="">
+    <div className="overflow-x-hidden">
       {/* Container */}
-      <div ref={rallyRef} className="w-[90%] h-[100vh] max-w-[1180px] mx-auto">
+      <div ref={rallyRef} className="w-[90%]  max-w-[1180px] mx-auto">
         {/* image and text container */}
         <div className="relative m-auto text-center mt-80 h-[550px]">
           <h1 className="z-30 absolute top-[-255px] left-1/2 -translate-x-1/2 lg:text-[180px] m-auto font-cool lg:max-w-[495px] lg:tracking-[-3.6px] leading-[0.9]">

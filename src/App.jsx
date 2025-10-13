@@ -14,7 +14,7 @@ import Rally from './pages/Rally';
 
 function App() {
   return (
-    <div className="font-manrope">
+    <div className="font-manrope overflow-x-hidden">
       <Navbar />
       <Hero />
       <Exp />
