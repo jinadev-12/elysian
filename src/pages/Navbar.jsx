@@ -2,18 +2,27 @@ import React, { useState } from "react";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const sidebaropen = () => {
-    setIsOpen(!isOpen);
-  };
+  const sidebaropen = () => setIsOpen(!isOpen);
 
   return (
-    <div className="font-cool tracking-wider ">
+    <div className="font-cool tracking-wider">
       {/* navbar */}
-      <div className="w-[90%] mx-auto max-w-[1180px] flex justify-between items-center lg:h-24 h-16 fixed  top-0 left-0 right-0 bg-white z-50 shadow-sm px-4">
+      <div className="w-[90%] mx-auto max-w-[1180px] flex justify-between items-center lg:h-24 h-16 fixed top-0 left-0 right-0 bg-white z-50 shadow-sm px-4">
         {/* left */}
         <div className="gap-16 text-lg hidden md:flex">
-          <div>LOCATION</div>
-          <div>FITNESS</div>
+          <a
+            href="#popular"
+            className="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-[#abd455] after:transition-all after:duration-300 hover:after:w-full"
+          >
+            LOCATION
+          </a>
+
+          <a
+            href="#popular"
+            className="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-[#abd455] after:transition-all after:duration-300 hover:after:w-full"
+          >
+            FITNESS
+          </a>
         </div>
         {/* logo */}
         <div className="text-2xl">
@@ -21,14 +30,24 @@ function Navbar() {
         </div>
         {/* right */}
         <div className="hidden md:flex gap-16 text-lg">
-          <div>ABOUT</div>
-          <div>CONTACT</div>
+          <a
+            href="#aboutus"
+            className="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-[#abd455] after:transition-all after:duration-300 hover:after:w-full"
+          >
+            ABOUT
+          </a>
+          <a
+            href="#products"
+            className="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-[#abd455] after:transition-all after:duration-300 hover:after:w-full"
+          >
+            CONTACT
+          </a>
         </div>
-        
+
+        {/* mobile hamburger */}
         <div className="flex md:hidden">
-          
           <button
-            className=" z-50 w-6  h-6 flex flex-col justify-between items-center md:hidden"
+            className="z-50 w-6 h-6 flex flex-col justify-between items-center md:hidden"
             onClick={sidebaropen}
           >
             <span
