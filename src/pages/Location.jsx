@@ -1,9 +1,9 @@
 import React from "react";
-import image1 from "../assets/location-1.jpg";
-import image2 from "../assets/location-2.jpg";
-import image3 from "../assets/location-3.jpg";
-import image4 from "../assets/location-4.jpg";
-import bg from "../assets/location-bg.jpg";
+import image1 from "../assets/location-img-1.jpg";
+import image2 from "../assets/location-img-2.jpg";
+import image3 from "../assets/locBg4.jpg";
+import image4 from "../assets/location-img-4.jpg";
+import bg from "../assets/locationBG2.jpg";
 
 
 
@@ -44,11 +44,11 @@ function Location() {
       {/* container */}
       <div className="max-w-[1180px] w-[90%] mx-auto flex flex-col lg:flex-row gap-16 relative z-10">
         {/* head */}
-        <div className="flex flex-col max-w-[440px]">
+        <div className="flex flex-col max-w-[440px] justify-center">
           <h2 className="font-cool text-6xl md:text-5xl font-bold mb-3 tracking-wider">
             OUR LOCATIONS
           </h2>
-          <p className="">
+          <p className="leading-relaxed">
             Ready to take your tennis game to the next level? Experience
             world-class coaching, state-of-the-art facilities, and a vibrant
             tennis community. Enroll today and become part of a legacy of
@@ -76,7 +76,7 @@ function Location() {
                 <p className="font-cool tracking-wider text-2xl uppercase">
                   {loc.name}
                 </p>
-                <p className="text-sm font-light">{loc.address}</p>
+                <p className="text-sm font-light uppercase tracking-wider">{loc.address}</p>
               </div>
             </div>
           ))}

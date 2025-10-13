@@ -45,11 +45,11 @@ function Faqs() {
       {/* Container */}
       <div className="max-w-[1180px] mx-auto w-[90%] flex flex-col lg:flex-row lg:justify-between lg:gap-20">
         {/* Header */}
-        <div className="mb-16 lg:mb-0 lg:w-1/2">
+        <div className="mb-16 lg:mb-0 lg:w-1/2 max-w-[460px] flex flex-col">
           <h2 className="text-[64px] text-white font-cool">FAQS</h2>
-          <p className="text-lg text-[#ddd] inline ">
-            Can’t find the answer you’re looking for? Chat with our friendly
-            team or email us at  {" "}
+          <p className="text-lg text-[#ddd]">
+            Can’t find the answer you’re looking for? Please chat to our
+            friendly team or write us an email at
           </p>
           <a
             href="mailto:info@elysiantennis.com"
@@ -73,7 +73,7 @@ function Faqs() {
                 className="w-full flex justify-between items-center text-left"
               >
                 <span
-                  className={`font-semibold text-lg transition-colors duration-200 ${
+                  className={`font-semibold text-lg transition-colors duration-200 hover:text-primary ${
                     openIndex === index ? "text-primary" : "text-gray-300"
                   }`}
                 >
