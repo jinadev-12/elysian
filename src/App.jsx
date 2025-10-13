@@ -18,10 +18,10 @@ function App() {
       <Navbar />
       <Hero />
       <Exp />
+      <Coaches/>
       <Location />
       <Faqs />
       <Footer />
-      <Coaches/>
     </div>
   );
 }
