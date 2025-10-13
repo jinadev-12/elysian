@@ -7,6 +7,7 @@ import Faqs from './pages/Faqs';
 import Footer from './pages/Footer';
 import Location from "./pages/Location";
 
+import Coaches from './pages/Coaches';
 
 
 
@@ -20,6 +21,7 @@ function App() {
       <Location />
       <Faqs />
       <Footer />
+      <Coaches/>
     </div>
   );
 }
