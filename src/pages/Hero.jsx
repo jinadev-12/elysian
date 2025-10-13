@@ -41,11 +41,11 @@ function Hero() {
   return (
     <div ref={containerRef} className="relative bg-white text-black">
       {/* home content text absolute mela */}
-      <div className=" left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10">
+      {/* <div className=" left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10">
         <h1 className="font-cool text-[80px] md:text-[112px] lg:text-[180px] leading-none">
           SWING WITH <br /> CONFIDENCE
         </h1>
-      </div>
+      </div> */}
 
       {/* Home video section */}
       <div className="relative h-[100vh] overflow-hidden">
