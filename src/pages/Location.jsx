@@ -54,7 +54,7 @@ function Location() {
             tennis community. Enroll today and become part of a legacy of
             excellence.
           </p>
-          <button className="bg-primary text-black text-base px-8 py-4 rounded-full hover:opacity-90 transition-all mt-6 self-start w-fit">
+          <button className="bg-primary text-black text-base px-8 py-4 rounded-full hover:bg-[#abd455] transition-all mt-6 self-start w-fit">
             START TODAY
           </button>
         </div>
@@ -73,7 +73,9 @@ function Location() {
                 className="w-full h-56 object-cover rounded-2xl mb-3"
               />
               <div className="">
-                <p className="font-cool tracking-wider text-2xl uppercase">{loc.name}</p>
+                <p className="font-cool tracking-wider text-2xl uppercase">
+                  {loc.name}
+                </p>
                 <p className="text-sm font-light">{loc.address}</p>
               </div>
             </div>
