@@ -10,94 +10,114 @@ function Hero() {
   const titleRef = useRef(null);
   const bottomTextRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+ useEffect(() => {
+   const ctx = gsap.context(() => {
+     const video = videoRef.current;
 
-      const video = videoRef.current;
+     // Base properties (same for all sizes)
+     gsap.set(video, {
+       transformOrigin: "center center",
+       position: "absolute",
+       top: "50%",
+       left: "50%",
+       xPercent: -50,
+       yPercent: -50,
+     });
 
-      // Base properties (same for all sizes)
-      gsap.set(video, {
-        transformOrigin: "center center",
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        xPercent: -50,
-        yPercent: -50,
-      });
+     // Apply borderRadius based on screen width
+     if (window.matchMedia("(min-width: 1024px)").matches) {
+       gsap.set(video, { borderRadius: "60px" });
+     } else if (window.matchMedia("(min-width: 768px)").matches) {
+       gsap.set(video, { borderRadius: "45px" });
+     } else {
+       gsap.set(video, { borderRadius: "25px" });
+     }
 
-      // Apply borderRadius based on screen width
-      if (window.matchMedia("(min-width: 1024px)").matches) {
-        // lg and above
-        gsap.set(video, { borderRadius: "60px" });
-      } else if (window.matchMedia("(min-width: 768px)").matches) {
-        // md
-        gsap.set(video, { borderRadius: "45px" });
-      } else {
-        // mobile
-        gsap.set(video, { borderRadius: "25px" });
-      }
+     // Set scale based on screen size
+     if (window.matchMedia("(min-width: 1024px)").matches) {
+       gsap.set(video, { scale: 0.6 });
+     } else {
+       gsap.set(video, { scale: 0.9 });
+     }
 
+     // 🌟 FADE IN MAIN CONTAINER
+     gsap.from(containerRef.current, {
+       opacity: 0,
+       duration: 1.5,
+       ease: "power2.out",
+     });
 
-      // Set scale based on screen size
-      if (window.matchMedia("(min-width: 1024px)").matches) {
-        // lg and above
-        gsap.set(video, { scale: 0.6 });
-      } else {
-        // md and below
-        gsap.set(video, { scale: 0.9 });
-      }
+     // 🌟 ENTRY ANIMATION (only on load) - smoother
+     const swing = titleRef.current.querySelector("span span:nth-child(1)");
+     const withText = titleRef.current.querySelector("span span:nth-child(2)");
+     const confidence = titleRef.current.querySelector("br + span");
 
+     const entryTl = gsap.timeline();
 
-      // Scroll-triggered scale up + border radius + text motion
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-          pin: true,
-        },
-      });
+     entryTl
+       .from(swing, {
+         opacity: 0,
+         y: 20,
+         duration: 0.7, // smoother
+         ease: "power2.out",
+       })
+       .from(
+         withText,
+         {
+           opacity: 0,
+           y: 20,
+           duration: 0.7, // smoother
+           ease: "power2.out",
+         },
+         "-=0.4" // slight overlap for smoothness
+       )
+       .from(
+         confidence,
+         {
+           opacity: 0,
+           y: 20,
+           duration: 0.7, // smoother
+           ease: "power2.out",
+         },
+         "-=0.4"
+       )
+       .from(
+         bottomTextRef.current,
+         {
+           opacity: 0,
+           y: 20,
+           duration: 0.7, // smoother
+           ease: "power2.out",
+         },
+         "-=0.4"
+       );
 
-      // video scale + border radius
-      tl.to(
-        videoRef.current,
-        {
-          scale: 1.05,
-          borderRadius: "0px",
-          ease: "none",
-        },
-        0
-      );
+     // 🌀 Scroll-triggered animation
+     const tl = gsap.timeline({
+       scrollTrigger: {
+         trigger: containerRef.current,
+         start: "top top",
+         end: "bottom top",
+         scrub: true,
+         pin: true,
+       },
+     });
 
-      // black title moves upward
-      tl.to(
-        titleRef.current,
-        {
-          y: -300,
-          ease: "none",
-        },
-        0
-      );
+     tl.to(
+       videoRef.current,
+       { scale: 1.05, borderRadius: "0px", ease: "none" },
+       0
+     );
+     tl.to(titleRef.current, { y: -400, ease: "none" }, 0);
+     tl.to(bottomTextRef.current, { y: 300, ease: "none" }, 0);
+   }, containerRef);
 
-      // white bottom text moves downward
-      tl.to(
-        bottomTextRef.current,
-        {
-          y: 300,
-          ease: "none",
-        },
-        0
-      );
-    }, containerRef);
+   return () => ctx.revert();
+ }, []);
 
-    return () => ctx.revert();
-  }, []);
 
   return (
-    // home
     <div className="pt-10 lg:pt-8">
-      {/* container */}
       <div
         ref={containerRef}
         className="relative top-16 md:top-28 lg:top-0 h-[100vh] bg-white text-black"
@@ -108,9 +128,11 @@ function Hero() {
           className="absolute -top-16 md:-top-[72px] lg:top-1 left-[50%] transform translate-x-[-50%] z-10 text-center"
         >
           <h1 className="font-cool text-[80px] md:text-[112px] lg:text-[160px] leading-[0.92]">
-            <span className="whitespace-nowrap">SWING WITH</span>
+            <span className="whitespace-nowrap">
+              <span>SWING</span> <span>WITH</span>
+            </span>
             <br />
-            CONFIDENCE
+            <span>CONFIDENCE</span>
           </h1>
         </div>
 
