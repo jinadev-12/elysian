@@ -57,10 +57,10 @@ function Hero() {
 
         {/* Learn More button */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
-          <button className="flex items-center gap-3 px-8 py-4 bg-black text-white rounded-full text-lg font-medium hover:scale-105 transition-transform duration-300">
-            Learn More
-            <i className="ri-arrow-down-long-line text-2xl"></i>
-          </button>
+          <div className="flex flex-col items-center gap-3">
+            <span className="text-3xl text-white font-cool">Learn More</span>
+            <i className="ri-arrow-down-long-line text-lg w-12 h-12 bg-primary rounded-full flex items-center justify-center"></i>
+          </div>
         </div>
 
         {/* video wrapper */}
