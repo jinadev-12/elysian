@@ -65,9 +65,9 @@ function Hero() {
 
 
   return (
-    <section className="relative h-screen overflow-hidden bg-white text-black">
+    <section className="relative z-[1] pb-[600px] overflow-hidden bg-white text-black">
       {/* container */}
-      <div ref={containerRef} className="relative w-full h-full">
+      <div ref={containerRef} className="relative   w-full h-full ">
         {/* title */}
         <div
           ref={titleRef}
@@ -93,7 +93,7 @@ function Hero() {
         {/* video wrapper */}
         <video
           ref={videoRef}
-          className="object-cover w-full h-full rounded-[60px] md:rounded-[40px] sm:rounded-[20px]"
+          className="object-cover w-full h-[700px] rounded-[60px] md:rounded-[40px] sm:rounded-[20px]"
           src="/homeBG.mp4"
           autoPlay
           muted

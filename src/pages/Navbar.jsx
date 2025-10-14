@@ -5,7 +5,7 @@ function Navbar() {
   const sidebaropen = () => setIsOpen(!isOpen);
 
   return (
-    <div className="font-cool tracking-wider relative ">
+    <div className="font-cool tracking-wider relative  ">
       {/* navbar */}
       <div className="w-[90%] mx-auto max-w-[1180px] flex  justify-between items-center  lg:h-24 h-16   bg-white z-50 shadow-sm md:px-20 px-4">
         {/* left */}
@@ -71,7 +71,7 @@ function Navbar() {
 
       {/* sidebar */}
       <div
-        className={`md:hidden fixed bg-white top-16 right-0 w-full h-[calc(100vh-4rem)] flex justify-start pt-0 text-center transition-transform duration-300 ease-in-out ${
+        className={`md:hidden fixed  top-16 right-0 w-full h-[calc(100vh-4rem)] flex justify-start pt-0 text-center transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         } lg:hidden z-40`}
       >
