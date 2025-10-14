@@ -12,10 +12,11 @@ function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Start centered, small
-      gsap.set(videoRef.current, {
-        scale: 0.9, // start at 90% size
-        borderRadius: "25px", // start with rounded corners
+
+      const video = videoRef.current;
+
+      // Base properties (same for all sizes)
+      gsap.set(video, {
         transformOrigin: "center center",
         position: "absolute",
         top: "50%",
@@ -23,6 +24,29 @@ function Hero() {
         xPercent: -50,
         yPercent: -50,
       });
+
+      // Apply borderRadius based on screen width
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        // lg and above
+        gsap.set(video, { borderRadius: "60px" });
+      } else if (window.matchMedia("(min-width: 768px)").matches) {
+        // md
+        gsap.set(video, { borderRadius: "45px" });
+      } else {
+        // mobile
+        gsap.set(video, { borderRadius: "25px" });
+      }
+
+
+      // Set scale based on screen size
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        // lg and above
+        gsap.set(video, { scale: 0.6 });
+      } else {
+        // md and below
+        gsap.set(video, { scale: 0.9 });
+      }
+
 
       // Scroll-triggered scale up + border radius + text motion
       const tl = gsap.timeline({
@@ -39,7 +63,7 @@ function Hero() {
       tl.to(
         videoRef.current,
         {
-          scale: 1,
+          scale: 1.05,
           borderRadius: "0px",
           ease: "none",
         },
@@ -50,7 +74,7 @@ function Hero() {
       tl.to(
         titleRef.current,
         {
-          y: -100,
+          y: -300,
           ease: "none",
         },
         0
@@ -60,7 +84,7 @@ function Hero() {
       tl.to(
         bottomTextRef.current,
         {
-          y: 100,
+          y: 300,
           ease: "none",
         },
         0
@@ -72,16 +96,16 @@ function Hero() {
 
   return (
     // home
-    <div className="pt-10">
+    <div className="pt-10 lg:pt-8">
       {/* container */}
       <div
         ref={containerRef}
-        className="relative top-16 h-[100vh] bg-white text-black"
+        className="relative top-16 md:top-28 lg:top-0 h-[100vh] bg-white text-black"
       >
         {/* title */}
         <div
           ref={titleRef}
-          className="absolute -top-16 left-[50%] transform translate-x-[-50%] z-10 text-center"
+          className="absolute -top-16 md:-top-[72px] lg:top-1 left-[50%] transform translate-x-[-50%] z-10 text-center"
         >
           <h1 className="font-cool text-[80px] md:text-[112px] lg:text-[160px] leading-[0.92]">
             <span className="whitespace-nowrap">SWING WITH</span>
@@ -101,7 +125,7 @@ function Hero() {
         </div>
 
         {/* video wrapper */}
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full overflow-hidden">
           <video
             ref={videoRef}
             className="object-cover w-full h-full rounded-[60px]"
@@ -115,7 +139,7 @@ function Hero() {
           {/* Bottom text overlay */}
           <div
             ref={bottomTextRef}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 text-white text-3xl md:text-5xl font-cool uppercase tracking-wider"
+            className="absolute bottom-16 lg:bottom-48 left-1/2 transform -translate-x-1/2 z-20 text-white text-3xl md:text-5xl font-cool uppercase tracking-wider"
           >
             ELEVATE YOUR GAME
           </div>
