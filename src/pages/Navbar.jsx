@@ -71,7 +71,7 @@ function Navbar() {
 
       {/* sidebar */}
       <div
-        className={`md:hidden fixed  top-16 right-0 w-full h-[calc(100vh-4rem)] flex justify-start pt-0 text-center transition-transform duration-300 ease-in-out ${
+        className={`md:hidden fixed bg-white top-16 right-0 w-full h-[calc(100vh-4rem)] flex justify-start pt-0 text-center transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         } lg:hidden z-40`}
       >
