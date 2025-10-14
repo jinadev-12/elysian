@@ -52,7 +52,7 @@ function Exp() {
   const wordsArray = headingText.split(" ");
 
   return (
-    <div className="bg-[#080808] overflow-x-hidden">
+    <div className="bg-[#080808] overflow-x-hidden relative z-20">
       <div className="w-[90%] max-w-[1180px] flex m-auto flex-col lg:flex-row justify-between gap-5 lg:gap-0 lg:items-center py-[120px]">
         <div className="font-cool text-[64px] text-white">
           <h1

@@ -93,7 +93,7 @@ function Coaches() {
 
   return (
     // main
-    <div className="py-20">
+    <div className="py-20 relative z-20 bg-white">
       {/* container */}
       <div className="w-[90%] max-w-[1180px] mx-auto">
         {/* heading and button */}
