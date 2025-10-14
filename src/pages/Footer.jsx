@@ -19,10 +19,38 @@ function Footer() {
           </div>
           {/* links */}
           <div className="font-cool tracking-wider flex text-lg gap-6 md:gap-12">
-            <div>LOCATIONS</div>
-            <div>FITNESS</div>
-            <div>ABOUT</div>
-            <div>CONTACT</div>
+            <div>
+              <a
+                href="#popular"
+                className="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-[#abd455] after:transition-all after:duration-300 hover:after:w-full"
+              >
+                LOCATION
+              </a>
+            </div>
+            <div>
+              <a
+                href="#popular"
+                className="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-[#abd455] after:transition-all after:duration-300 hover:after:w-full"
+              >
+                FITNESS
+              </a>
+            </div>
+            <div>
+              <a
+                href="#popular"
+                className="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-[#abd455] after:transition-all after:duration-300 hover:after:w-full"
+              >
+                ABOUT
+              </a>
+            </div>
+            <div>
+              <a
+                href="#popular"
+                className="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-[#abd455] after:transition-all after:duration-300 hover:after:w-full"
+              >
+                CONTACT
+              </a>
+            </div>
           </div>
         </div>
         {/* join form */}
