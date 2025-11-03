@@ -3,105 +3,114 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+
 import img1 from "../assets/coach-img1.jpg";
 import img2 from "../assets/coach-img2.jpg";
 import img3 from "../assets/coach-img3.jpg";
 import img4 from "../assets/coach-img4.jpg";
 
-
 function Coaches() {
-  const row1Ref = useRef(null);
-  const row2Ref = useRef(null);
+  const sectionRef = useRef(null);
   const headingcoachRef = useRef(null);
-  const inputcoachesRef = useRef(null)
+  const inputcoachesRef = useRef(null);
 
-   const headingcoachText = "MEET THE COACHES BEHIND ELYSIAN";
-   const wordscoachArray = headingcoachText.split(" ");
+  const headingcoachText = "MEET THE COACHES BEHIND ELYSIAN";
+  const wordscoachArray = headingcoachText.split(" ");
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // row-1
-      gsap.fromTo(
-        ".coach-image",
-        { scale: 1 },
-        {
-          scale: 1.46,
-          scrollTrigger: {
-            trigger: row1Ref.current,
-            start: "top 88%", // row hits the middle of viewport
-            end: "top top", // row hits the top of viewport
-            scrub: true, // smooth scaling while scrolling
-          },
-          ease: "power2.out",
-        }
-      );
-      // row-2
-      gsap.fromTo(
-        ".coach-image-2",
-        { scale: 1 },
-        {
-          scale: 1.46,
-          scrollTrigger: {
-            trigger: row2Ref.current,
-            start: "top 88%", // row hits the middle of viewport
-            end: "top top", // row hits the top of viewport
-            scrub: true, // smooth scaling while scrolling
-          },
-          ease: "power2.out",
-        }
-      );
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    // Animate each image individually
+    const imgs = gsap.utils.toArray(".coach-image");
+    imgs.forEach((img) => {
+      gsap.set(img, { scale: 0.7 });
 
-// heading
- const words = headingcoachRef.current.querySelectorAll(".wordcoach");
+      gsap.to(img, {
+        scale: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: img, // each image triggers its own animation
+          start: "top 88%",
+          end: "top top",
+          scrub: 1.5, // smoother transition (takes more time)
+        },
+      });
+    });
+
+    // Heading animation (unchanged)
+    const words = headingcoachRef.current.querySelectorAll(".wordcoach");
     gsap.fromTo(
       words,
-      { opacity: 0, y: 30 }, // from state
+      { opacity: 0, y: 30 },
       {
         opacity: 1,
         y: 0,
-
-        stagger: 0.1, // animate each word with delay
+        stagger: 0.1,
         duration: 0.8,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: headingcoachRef.current, // element that triggers animation
-          start: "top 90%", // when top of element hits 80% of viewport
-          toggleActions: "play none none none", // play only once
+          trigger: headingcoachRef.current,
+          start: "top 90%",
+          toggleActions: "play none none none",
         },
       }
     );
 
-    // inputbox
-        gsap.fromTo(
-          inputcoachesRef.current,
-          { y: 20, autoAlpha: 0 }, // start
-          {
-            y: 0,
-            autoAlpha: 1, // end
-            duration: 1,
-            scrollTrigger: {
-              trigger: headingcoachRef.current,
-              start: "top 50%",
-            },
-          }
-        );
+    // Input button animation (unchanged)
+    gsap.fromTo(
+      inputcoachesRef.current,
+      { y: 20, autoAlpha: 0 },
+      {
+        y: 0,
+        autoAlpha: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: headingcoachRef.current,
+          start: "top 50%",
+        },
+      }
+    );
+  }, sectionRef);
 
-    });
+  return () => ctx.revert();
+}, []);
 
-    return () => ctx.revert();
-  }, []);
+
+
+  const coaches = [
+    {
+      img: img1,
+      city: "Los Angeles, CA",
+      name: "MARCO BELLINI",
+      desc: "With 18 years of coaching under her belt, Sarah is known for her ability to develop young talent, guiding players to reach their full potential on the court.",
+    },
+    {
+      img: img2,
+      city: "Austin, TX",
+      name: "RYDER CAINE",
+      desc: "Jessica brings 22 years of experience to the table, specializing in refining advanced techniques and mental toughness in competitive players.",
+    },
+    {
+      img: img3,
+      city: "Miami, FL",
+      name: "LUKA DRAVIK",
+      desc: "A former collegiate athlete with 15 years of coaching experience, Martina is praised for her dynamic coaching style and her success in training elite junior players.",
+    },
+    {
+      img: img4,
+      city: "Chicago, IL",
+      name: "AXEL STRAYER",
+      desc: "With 20 years of experience, Kevin’s passion for tennis has made him a favorite among players seeking to improve both their technical skills and strategic thinking.",
+    },
+  ];
 
   return (
-    // main
-    <div className="py-20 relative z-20 bg-white">
-      {/* container */}
+    <div ref={sectionRef} className="py-20 relative z-20 bg-white">
       <div className="w-[90%] max-w-[1180px] mx-auto">
-        {/* heading and button */}
+        {/* Heading and Button */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6">
-          {/* heading */}
           <h1
             ref={headingcoachRef}
-            className="text-[64px] font-cool uppercase leading-[1.04]"
+            className="text-[48px] sm:text-[64px] font-cool uppercase leading-[1.04]"
           >
             {wordscoachArray.map((word, i) => (
               <React.Fragment key={i}>
@@ -110,127 +119,41 @@ function Coaches() {
               </React.Fragment>
             ))}
           </h1>
-          {/* button */}
+
           <div ref={inputcoachesRef}>
-            <button className="bg-primary hover:bg-[#abd455]  px-8 py-4 rounded-[80px] font-manrope">
-              EXPLORE ACADEMY <i class="ri-arrow-right-s-line "></i>
+            <button className="bg-primary hover:bg-[#abd455] px-8 py-4 rounded-[80px] font-manrope">
+              EXPLORE ACADEMY <i className="ri-arrow-right-s-line"></i>
             </button>
           </div>
         </div>
 
-        {/*row-1 */}
-        <div
-          ref={row1Ref}
-          className="mt-28  lg:gap-0 gap-28 lg:flex-row flex-col mx-auto flex lg:justify-between"
-        >
-          {/* col-1 */}
-          <div className="flex  flex-col gap-1">
-            {/* image */}
-            <div className="m-auto lg:m-0 sm:w-[372px] sm:h-[372px] w-[250px] h-[250px]  coach-image">
-              <img
-                src={img1}
-                alt=""
-                className="w-full h-full object-cover object-center rounded-[3.5rem] shadow-[0_100px_80px_#00000012,0_64px_46px_#0000000f,0_40px_25px_#0000000d,0_20px_13px_#0000000a,0_8px_7px_#00000008,0_2px_3px_#00000005]"
-              />
+        {/* Coaches Grid */}
+        <div className="mt-28 grid grid-cols-1 lg:grid-cols-2 gap-20">
+          {coaches.map((coach, i) => (
+            <div key={i} className="flex flex-col gap-6 items-start">
+              <div className="coach-image overflow-hidden rounded-[12%] w-full aspect-[1/1]">
+                <img
+                  src={coach.img}
+                  alt={coach.name}
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+              <div className="text-left">
+                <p className="uppercase text-[14px] tracking-[1.4px] text-[#080808] mt-6">
+                  {coach.city}
+                </p>
+                <h3 className="font-cool text-[40px] sm:text-[56px] mt-2">
+                  {coach.name}
+                </h3>
+                <p className="text-[18px] leading-[28.8px] max-w-[440px] mt-3">
+                  {coach.desc}
+                </p>
+                <button className="py-4 hover:bg-gray-300 px-8 mt-5 rounded-[80px] border border-gray-400">
+                  LEARN MORE
+                </button>
+              </div>
             </div>
-            {/* text-container */}
-            <div className="lg:lg:ml-[-60px]">
-              <p className="uppercase text-[14px] mt-32 tracking-[1.4px] leading-none text-[#080808]">
-                Los Angeles, CA
-              </p>
-              <h3 className=" font-cool text-[64px]">MARCO BELLINI</h3>
-              <p className="text-[18px] leading-[28.8px] max-w-[440px]">
-                With 18 years of coaching under her belt, Sarah is known for her
-                ability to develop young talent, guiding players to reach their
-                full potential on the court.
-              </p>
-              <button className="py-4 hover:bg-gray-300 px-8 mt-5 rounded-[80px] border border-[rgb(169,169,169)] mr-auto">
-                LEARN MORE
-              </button>
-            </div>
-          </div>
-          {/* col-2 */}
-          <div className="flex flex-col gap-1">
-            {/* image */}
-            <div className="m-auto lg:m-0 sm:w-[372px] sm:h-[372px] w-[250px] h-[250px]  coach-image">
-              <img
-                src={img2}
-                alt=""
-                className="w-full h-full object-cover object-center rounded-[3.5rem] shadow-[0_100px_80px_#00000012,0_64px_46px_#0000000f,0_40px_25px_#0000000d,0_20px_13px_#0000000a,0_8px_7px_#00000008,0_2px_3px_#00000005]"
-              />
-            </div>
-            <div className="lg:ml-[-60px]">
-              <p className="uppercase text-[14px] mt-32 tracking-[1.4px] leading-none text-[#080808]">
-                AUSTIN, TX
-              </p>
-              <h3 className=" font-cool text-[64px]">RYDER CAINE</h3>
-              <p className="text-[18px] leading-[28.8px] max-w-[440px]">
-                Jessica brings 22 years of experience to the table, specializing
-                in refining advanced techniques and mental toughness in
-                competitive players.
-              </p>
-              <button className="py-4 hover:bg-gray-300 px-8 mt-5 rounded-[80px] border border-[rgb(169,169,169)] mr-auto">
-                LEARN MORE
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/*row-2 */}
-        <div
-          ref={row2Ref}
-          className="mt-28 lg:gap-0 gap-28 lg:flex-row flex-col mx-auto flex lg:justify-between"
-        >
-          {/* col-1 */}
-          <div className="flex flex-col gap-1">
-            {/* image */}
-            <div className="m-auto lg:m-0 sm:w-[372px] sm:h-[372px] w-[250px] h-[250px]  coach-image-2">
-              <img
-                src={img3}
-                alt=""
-                className="w-full h-full object-cover object-center rounded-[3.5rem] shadow-[0_100px_80px_#00000012,0_64px_46px_#0000000f,0_40px_25px_#0000000d,0_20px_13px_#0000000a,0_8px_7px_#00000008,0_2px_3px_#00000005]"
-              />
-            </div>
-            <div className="lg:ml-[-60px]">
-              <p className="uppercase text-[14px] mt-32 tracking-[1.4px] leading-none text-[#080808]">
-                Miami, FL
-              </p>
-              <h3 className=" font-cool text-[64px]">LUKA DRAVIK</h3>
-              <p className="text-[18px] leading-[28.8px] max-w-[440px]">
-                A former collegiate athlete with 15 years of coaching
-                experience, Martina is praised for her dynamic coaching style
-                and her success in training elite junior players.
-              </p>
-              <button className="py-4 hover:bg-gray-300 px-8 mt-5 rounded-[80px] border border-[rgb(169,169,169)] mr-auto">
-                LEARN MORE
-              </button>
-            </div>
-          </div>
-          {/* col-2 */}
-          <div className="flex flex-col gap-1">
-            {/* image */}
-            <div className="m-auto lg:m-0 sm:w-[372px] sm:h-[372px] w-[250px] h-[250px]  coach-image-2">
-              <img
-                src={img4}
-                alt=""
-                className="w-full h-full object-cover object-center rounded-[3.5rem] shadow-[0_100px_80px_#00000012,0_64px_46px_#0000000f,0_40px_25px_#0000000d,0_20px_13px_#0000000a,0_8px_7px_#00000008,0_2px_3px_#00000005]"
-              />
-            </div>
-            <div className="lg:ml-[-60px]">
-              <p className="uppercase text-[14px] mt-32 tracking-[1.4px] leading-none text-[#080808]">
-                Chicago, IL
-              </p>
-              <h3 className=" font-cool text-[64px]">AXEL STRAYER</h3>
-              <p className="text-[18px] leading-[28.8px] max-w-[440px]">
-                With 20 years of experience, Kevin’s passion for tennis has made
-                him a favorite among players seeking to improve both their
-                technical skills and strategic thinking.
-              </p>
-              <button className="py-4 hover:bg-gray-300 px-8 mt-5 rounded-[80px] border border-[rgb(169,169,169)] mr-auto">
-                LEARN MORE
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
