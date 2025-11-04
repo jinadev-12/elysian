@@ -11,41 +11,43 @@ function Rally() {
     const rallyheadRef = useRef(null);
 
 
-  useEffect(() => {
-    // Image scale animation
-    gsap.fromTo(
-      imageRef.current,
-      { scaleX: 1.3 },
-      {
-        scaleX: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: rallyRef.current,
-          start: "top 95%",
-          scrub: true,
-        },
-      }
-    );
+useEffect(() => {
+  // Image shrink animation (slower scroll-based scaling)
+  gsap.fromTo(
+    imageRef.current,
+    { scale: 1.2 },
+    {
+      scale: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: rallyRef.current,
+        start: "top bottom", // starts as soon as image enters viewport
+        end: "top top", // now takes longer (scrolls entire height of image)
+        scrub: 1.5, // adds smooth slow feel
+      },
+    }
+  );
 
-    // Heading stagger animation (center-out with bounce)
-    gsap.fromTo(
-      ".word",
-      { opacity: 0, y: 30 }, // from state
-      {
-        opacity: 1,
-        y: 0,
+  // Heading animation (unchanged)
+  gsap.fromTo(
+    ".word",
+    { opacity: 0, y: 30 },
+    {
+      opacity: 1,
+      y: 0,
+      stagger: 0.1,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: rallyheadRef.current,
+        start: "top 60%",
+        toggleActions: "play none none none",
+      },
+    }
+  );
+}, []);
 
-        stagger: 0.1, // animate each word with delay
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: rallyheadRef.current, // element that triggers animation
-          start: "top 60%", // when top of element hits 80% of viewport
-          toggleActions: "play none none none", // play only once
-        },
-      }
-    );
-  }, []);
+
 
   return (
     <div ref={rallyheadRef} className="overflow-x-hidden">
