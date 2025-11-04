@@ -131,7 +131,7 @@ useEffect(() => {
         <div className="mt-28 grid grid-cols-1 lg:grid-cols-2 gap-20">
           {coaches.map((coach, i) => (
             <div key={i} className="flex flex-col gap-6 items-start">
-              <div className="coach-image overflow-hidden rounded-[12%] w-full aspect-[1/1]">
+              <div className="coach-image overflow-hidden rounded-[12%] w-full aspect-[1/1] shadow-[0_100px_80px_#00000012,0_64px_46px_#0000000f,0_40px_25px_#0000000d,0_20px_13px_#0000000a,0_8px_7px_#00000008,0_2px_3px_#00000005]">
                 <img
                   src={coach.img}
                   alt={coach.name}

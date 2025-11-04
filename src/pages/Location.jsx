@@ -1,79 +1,75 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-import image1 from "../assets/location-img-1.jpg";
-import image2 from "../assets/location-img-2.jpg";
-import image3 from "../assets/locBg4.jpg";
-import image4 from "../assets/location-img-4.jpg";
+
+import image1 from "../assets/loc1.jpeg";
+import image2 from "../assets/loc2.jpeg";
+import image3 from "../assets/loc3.jpeg";
+import image4 from "../assets/loc4.jpeg";
+
 import bg from "../assets/locationBG2.jpg";
 
 function Location() {
+  const locationRef = useRef(null);
 
+  // gsap animation
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const triggerConfig = {
+        trigger: locationRef.current,
+        start: "top 70%",
+      };
 
-const locationRef = useRef(null);
-// gsap
-useEffect(() => {
-  const ctx = gsap.context(() => {
-    const triggerConfig = {
-      trigger: locationRef.current,
-      start: "top 65%",
-    };
-    // heading and button
-    gsap.fromTo(
-      ".headbuttonup",
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        delay:0.3,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: triggerConfig,
-      }
-    );
-    // para
-    gsap.fromTo(
-      ".paraimg",
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        delay: 0.3,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: triggerConfig,
-      }
-    );
+      // heading + button
+      gsap.fromTo(
+        ".headbuttonup",
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          delay: 0.3,
+          stagger: 0.25,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: triggerConfig,
+        }
+      );
 
-    // img-container
-    gsap.fromTo(
-      ".img",
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-      
-        
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: triggerConfig,
-      }
-    );
-  });
+      // paragraph
+      gsap.fromTo(
+        ".paraimg",
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          delay: 0.5,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: triggerConfig,
+        }
+      );
 
-  return () => ctx.revert(); // cleanup on unmount
-}, []);
+      // cards
+      gsap.fromTo(
+        ".img",
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.1,
+          ease: "power3.out",
+          stagger: 0.2,
+          scrollTrigger: triggerConfig,
+        }
+      );
+    });
 
-
-
+    return () => ctx.revert();
+  }, []);
 
   const locations = [
-
-
     {
       img: image1,
       name: "Grandview Park Tennis Center",
@@ -99,21 +95,24 @@ useEffect(() => {
   return (
     <div
       ref={locationRef}
-      className="relative py-16 md:py-20 bg-cover bg-center bg-no-repeat text-gray-200"
-      style={{
-        backgroundImage: `url(${bg})`,
-      }}
+      className="relative py-16 md:py-20 text-gray-200 overflow-hidden"
     >
-      {/* overlay */}
+      {/* blurred background */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-md scale-105"
+        style={{ backgroundImage: `url(${bg})` }}
+      ></div>
+
+      {/* dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-tr from-black/70 to-black/0"></div>
 
-      {/* container */}
-      <div className="max-w-[1180px] w-[90%] mx-auto flex flex-col lg:flex-row gap-16 relative z-10">
-        {/* head */}
+      {/* content container */}
+      <div className="max-w-[1180px] w-[90%] mx-auto flex flex-col lg:flex-row gap-8 relative z-10 justify-between">
+        {/* left section */}
         <div className="flex flex-col max-w-[440px] justify-center">
           <h2 className="font-cool text-6xl md:text-5xl font-bold mb-3 tracking-wider">
-            <span className="headbuttonup">OUR </span>
-            <span className="headbuttonup">LOCATIONS</span>
+            <span className="headbuttonup block">OUR</span>
+            <span className="headbuttonup block">LOCATIONS</span>
           </h2>
           <p className="leading-relaxed paraimg">
             Ready to take your tennis game to the next level? Experience
@@ -126,20 +125,22 @@ useEffect(() => {
           </button>
         </div>
 
-        {/* card container */}
-        <div className=" flex md:grid md:grid-cols-2 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-smooth">
+        {/* right section - cards */}
+        <div className="flex md:grid md:grid-cols-2 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-smooth">
           {locations.map((loc, i) => (
-            // card
             <div
               key={i}
-              className="img flex-shrink-0 w-80 md:w-auto overflow-hidden hover:shadow-lg transition-all snap-start "
+              className="img flex-shrink-0 w-80 md:w-auto overflow-hidden rounded-2xl transition-all snap-start hover:scale-[1.03] hover:shadow-xl duration-500"
             >
-              <img
-                src={loc.img}
-                alt={loc.name}
-                className="w-full h-56 object-cover rounded-2xl mb-3"
-              />
-              <div className="">
+              {/* image container with 4:3 ratio */}
+              <div className="w-full aspect-[4/3] overflow-hidden rounded-2xl mb-3 shadow-[0_100px_80px_#00000012,0_64px_46px_#0000000f,0_40px_25px_#0000000d,0_20px_13px_#0000000a,0_8px_7px_#00000008,0_2px_3px_#00000005]">
+                <img
+                  src={loc.img}
+                  alt={loc.name}
+                  className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+              <div>
                 <p className="font-cool tracking-wider text-2xl uppercase">
                   {loc.name}
                 </p>
